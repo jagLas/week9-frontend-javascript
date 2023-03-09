@@ -2,6 +2,22 @@ export function findElementById(id) {
     // Return the element in the DOM with corresponding `id`
 
     // Your code here
+    const queue = [];
+    queue.push(...document.body.children)
+
+    while (queue.length > 0) {
+        const element = queue.shift();
+
+        if (element.id === id) {
+            return element;
+        }
+
+        if(element.children.length > 0) {
+            queue.push(...element.children);
+        }
+    }
+
+    return 'not found';
 }
 
 export function findFirstElementOfTag(tag) {

@@ -51,10 +51,8 @@ export function findFirstElementOfClass(cls) {
 
     while (queue.length > 0) {
         const element = queue.shift();
-        console.log(element)
-        console.log(element.className)
 
-        if (element.classList == cls) {
+        if (element.classList.contains(cls)) {
             return element;
         }
 

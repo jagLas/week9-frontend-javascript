@@ -68,6 +68,23 @@ export function findElementsOfTag(tag) {
     // Return an array of elements that have a tag name of `tag`
 
     // Your code here
+    const elements = [];
+    const queue = [];
+    queue.push(...document.body.children)
+
+    while (queue.length > 0) {
+        const element = queue.shift();
+
+        if (element.tagName === tag) {
+            elements.push(element);
+        }
+
+        if(element.children.length > 0) {
+            queue.push(...element.children);
+        }
+    }
+
+    return elements;
 }
 
 export function findElementsOfClass(cls) {

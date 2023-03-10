@@ -91,4 +91,21 @@ export function findElementsOfClass(cls) {
     // Return an array of elements that have are of class `cls`
 
     // Your code here
+    const elements = [];
+    const queue = [];
+    queue.push(...document.body.children)
+
+    while (queue.length > 0) {
+        const element = queue.shift();
+
+        if (element.classList.contains(cls)) {
+            elements.push(element);
+        }
+
+        if(element.children.length > 0) {
+            queue.push(...element.children);
+        }
+    }
+
+    return elements;
 }

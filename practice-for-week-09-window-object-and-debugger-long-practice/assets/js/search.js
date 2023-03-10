@@ -24,12 +24,46 @@ export function findFirstElementOfTag(tag) {
     // Return the first occurence of an element of tag name `tag`
 
     // Your code here
+    const queue = [];
+    queue.push(...document.body.children)
+
+    while (queue.length > 0) {
+        const element = queue.shift();
+
+        if (element.tagName === tag) {
+            return element;
+        }
+
+        if(element.children.length > 0) {
+            queue.push(...element.children);
+        }
+    }
+
+    return 'not found';
 }
 
 export function findFirstElementOfClass(cls) {
     // Return the first occurence of an element of class `cls`
 
     // Your code here
+    const queue = [];
+    queue.push(...document.body.children)
+
+    while (queue.length > 0) {
+        const element = queue.shift();
+        console.log(element)
+        console.log(element.className)
+
+        if (element.classList == cls) {
+            return element;
+        }
+
+        if(element.children.length > 0) {
+            queue.push(...element.children);
+        }
+    }
+
+    return 'not found';
 }
 
 export function findElementsOfTag(tag) {

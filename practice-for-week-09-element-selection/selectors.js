@@ -4,22 +4,47 @@ const select = () => {
     /* Section 1 */
     // 1. Get all seeded fruit elements
     // Your code here
+    const seeded = document.body.getElementsByClassName('seed');
+    console.log(seeded);
+
     
     // 2. Get all seedless fruit elements
     // Your code here
+    const seedless = document.body.getElementsByClassName('seedless');
+    console.log(seedless);
 
     // 3. Get first seedless fruit element
     // Your code here
+    const firstSeedless = document.body.getElementsByClassName('seedless')[0];
+    console.log(firstSeedless);
 
     /* Section 2 */
     // 4. Get inner span with text "you"
     // Your code here
+    let spans = document.body.getElementsByTagName('span')
+    let filtered = Array.prototype.filter.call(
+        spans,
+        span => span.innerText === 'you'
+    )
+    console.log(filtered)
 
     // 5. Get all children of element "wrapper"
     // Your code here
+    const wrapper = document.getElementById('wrapper')
+    const wrapperChildren = wrapper.children;
+    console.log(wrapperChildren)
 
     // 6. Get all odd number list items in the list
     // Your code here
+
+    //code does not account for only odds within that list.
+    // const liEls = document.getElementsByTagName('li');
+    // const oddLis = [];
+    // for (let i = 0; i < liEls.length; i += 2) {
+    //     oddLis.push(liEls[i])
+    // }
+    // console.log(oddLis)
+
 
     // 7. Get all even number list items in the list
     // Your code here

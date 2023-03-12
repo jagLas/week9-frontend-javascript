@@ -36,18 +36,15 @@ const select = () => {
 
     // 6. Get all odd number list items in the list
     // Your code here
-
-    //code does not account for only odds within that list.
-    // const liEls = document.getElementsByTagName('li');
-    // const oddLis = [];
-    // for (let i = 0; i < liEls.length; i += 2) {
-    //     oddLis.push(liEls[i])
-    // }
-    // console.log(oddLis)
+    // const ol = document.getElementsByTagName('ol');
+    const oddLis = document.querySelectorAll('ol > li.odd');
+    console.log(oddLis);
 
 
     // 7. Get all even number list items in the list
     // Your code here
+    const evenLis = document.querySelectorAll(`ol > li:not(.odd)`);
+    console.log(evenLis)
 
     /* Section 3 */
     // 8. Get all tech companies without a class name

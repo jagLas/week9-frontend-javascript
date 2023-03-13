@@ -49,12 +49,23 @@ const select = () => {
     /* Section 3 */
     // 8. Get all tech companies without a class name
     // Your code here
+    const noClassTech = document.querySelectorAll('#three a:not([class]')
+    console.log(noClassTech)
 
     // 9. Get "Amazon" list element
     // Your code here
+    const amazon = document.querySelector('.shopping')
+    console.log(amazon)
 
     // 10. Get all unicorn list elements (not the image element)
     // Your code here
+    const unicorns = document.querySelectorAll('.unicorn')
+    const unicornParents = [];
+    for (let i = 0; i < unicorns.length; i++) {
+        unicornParents.push(unicorns[i].parentNode)
+    }
+    console.log(unicornParents)
+
 }
 
 window.onload = select;

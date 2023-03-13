@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('DOMContentLoaded', ()=> {
     const redInput = document.getElementById('red-input');
-    redInput.addEventListener('input', () => {
+    redInput.addEventListener('input', function redListener() {
         if (redInput.value === 'red') {
             redInput.setAttribute('style', 'background-color: red')
         } else {
@@ -22,5 +22,13 @@ window.addEventListener('DOMContentLoaded', ()=> {
         const input = document.getElementById('list-add').value;
         li.innerText = input;
         list.appendChild(li);
+    })
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+    const colorWheel = document.querySelector('#color-select');
+    const div = document.querySelector('#section-3')
+    colorWheel.addEventListener('change', () => {
+        div.setAttribute('style', `background-color: ${colorWheel.value}`)
     })
 })

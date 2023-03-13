@@ -5,22 +5,25 @@ window.onload = () => {
     <h1>James</h1>
     `
 
+    const listItems = [
+        `I'm learning how to code`,
+        `This page is to practice adding html via javscript`,
+        `I'm looking forward to this exciting change in careers`,
+        `I have refactored this list to use an array`,
+        `Enjoy the page`
+    ]
+
+    let firstList = createUnorderedList(listItems);
+    document.body.appendChild(firstList)
+}
+
+function createUnorderedList(listItems) {
     let newUl = document.createElement('ul');
-    document.body.appendChild(newUl)
+    listItems.forEach(item => {
+        const newLi = document.createElement('li');
+        newLi.innerText = item;
+        newUl.appendChild(newLi);
+    })
 
-    let newLi = document.createElement('li');
-    newLi.innerText = `I'm learning how to code`;
-    newUl.appendChild(newLi);
- 
-    newLi = document.createElement('li');
-    newLi.innerText = `This page is to practice adding html via javscript`;
-    newUl.appendChild(newLi);
-
-    newLi = document.createElement('li');
-    newLi.innerText = `I'm looking forward to this exciting change in careers`;
-    newUl.appendChild(newLi);
-
-    newLi = document.createElement('li');
-    newLi.innerText = `Enjoy the page`;
-    newUl.appendChild(newLi);
+    return newUl;
 }

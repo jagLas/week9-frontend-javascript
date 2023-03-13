@@ -14,7 +14,14 @@ window.onload = () => {
     ]
 
     let firstList = createUnorderedList(listItems);
-    document.body.appendChild(firstList)
+    document.body.appendChild(firstList);
+
+    document.querySelector('h1').setAttribute('class', 'name');
+    document.querySelector('ul').setAttribute('class', 'my-details');
+    document.querySelectorAll('ul > li').forEach(li => {
+        li.setAttribute('class','detail');
+    });
+
 }
 
 function createUnorderedList(listItems) {

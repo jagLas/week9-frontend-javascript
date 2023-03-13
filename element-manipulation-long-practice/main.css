@@ -1,0 +1,22 @@
+.name {
+    color: maroon;
+    text-align: center;
+}
+
+.my-details {
+    border: solid 1px darkgreen;
+    /* padding: 8px; */
+    padding: 8px;
+    list-style: none;
+    text-align: center;
+    background: linear-gradient(180deg, lightgreen, darkgreen);
+}
+
+.detail {
+    padding: 8px;
+}
+
+.detail:hover {
+    background-color: red;
+
+}

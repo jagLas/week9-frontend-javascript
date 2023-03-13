@@ -42,9 +42,13 @@ const removeFirst = document.getElementById("remove-first");
 removeFirst.addEventListener("click", () => {
     /*-------------------- Select the first dog card --------------------- */
     // Your code here
+    const first = document.querySelector('.gallery > ul > li')
+    // console.log(first)
+
 
     /*-------------------- Remove the first dog card --------------------- */
     // Your code here
+    first.remove();
 });
 
 /************************** REMOVE LAST DOG BUTTON ***************************/
@@ -52,7 +56,11 @@ const removeLast = document.getElementById("remove-last");
 removeLast.addEventListener("click", () => {
     /*-------------------- Select the last dog card ----------------------- */
     // Your code here
+    let lastDog = document.querySelectorAll('.gallery > ul > li');
+    lastDog = lastDog[[lastDog.length - 1]]
+    // console.log(lastDog)
 
     /*-------------------- Remove the last dog card ----------------------- */
     // Your code here
+    lastDog.remove();
 });

@@ -22,6 +22,18 @@ window.onload = () => {
         li.setAttribute('class','detail');
     });
 
+    const clock = document.createElement('div');
+    document.body.appendChild(clock)
+    let time = new Date()
+
+    clock.innerText = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+
+
+    setInterval(() => {
+        time = new Date()
+        clock.innerText = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();;
+    }, 1000)
+
 }
 
 function createUnorderedList(listItems) {

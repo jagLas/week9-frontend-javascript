@@ -26,7 +26,6 @@ function makeBoard () {
     //creates the gameboard
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id', 'game-board')
-    console.log('making board')
     board.grid.forEach((row, rowI) => {
         row.forEach((col, colI) => {
             const square = document.createElement('div');
@@ -39,9 +38,16 @@ function makeBoard () {
     document.body.appendChild(wrapper);
 }
 
+//creates the listener for square presses
 function squareListen() {
     const gameBoard = document.querySelector('#game-board')
     gameBoard.addEventListener('click', makeShot)
+}
+
+//creates the lisener for the reset button
+function resetListen() {
+    const reset = document.querySelector('button');
+    reset.addEventListener('click', resetGame);
 }
 
 function makeShot(e) {
@@ -70,11 +76,21 @@ function makeShot(e) {
 }
 
 function resetGame() {
-
+    const h1 = document.querySelector('h1');
+    document.body.innerHTML = '';
+    document.body.appendChild(h1);
+    board = new Board();
+    console.log(board.grid)
+    makeBoard();
+    squareListen();
+    resetListen();
 }
+
+
 
 
 window.onload = () => {
     makeBoard();
     squareListen();
+    resetListen();
 }

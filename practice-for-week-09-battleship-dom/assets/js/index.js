@@ -23,28 +23,35 @@ function makeBoard () {
     document.body.appendChild(wrapper);
 }
 
-
-
 function test() {
     const gameBoard = document.querySelector('#game-board')
-    gameBoard.addEventListener('click', (e) => {
-        // console.log(e.target);
-        const row = e.target.dataset.row;
-        const col = e.target.dataset.col;
-
-        let res;
-        if (row && col) {
-            res = board.makeHit(row, col)
-        }
-        console.log('shot at', [row, col], 'res:', res)
-        if (res) {
-            e.target.innerText = res;
-            e.target.classList.add('hit');
-        } else {
-            e.target.classList.add('class', 'miss');
-        }
-    })
+    gameBoard.addEventListener('click', makeShot)
 }
+
+function makeShot(e) {
+    const row = e.target.dataset.row;
+    const col = e.target.dataset.col;
+
+    let res;
+    if (row && col) {
+        res = board.makeHit(row, col)
+    }
+    console.log('shot at', [row, col], 'res:', res)
+    if (res) {
+        e.target.innerText = res;
+        e.target.classList.add('hit');
+    } else {
+        e.target.classList.add('class', 'miss');
+    }
+
+    const gameStatus = board.isGameOver();
+    if (gameStatus){
+        const gameBoard = document.querySelector('#game-board')
+        gameBoard.removeEventListener('click', makeShot)
+        console.log('Game over: eventlistener removed')
+    }
+}
+
 
 window.onload = () => {
     makeBoard();

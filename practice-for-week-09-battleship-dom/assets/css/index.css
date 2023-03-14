@@ -1,6 +1,19 @@
 /* Your code here */
 h1 {
     text-align: center;
+    padding: 8px;
+    margin: 0px;
+}
+
+div {
+    text-align: center;
+}
+
+button {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: 8px auto 16px;
+    width: fit-content;
 }
 
 #game-board{
@@ -24,7 +37,7 @@ h1 {
 }
 
 #win-message.hidden {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 .square {

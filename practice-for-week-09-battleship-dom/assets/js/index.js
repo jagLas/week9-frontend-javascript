@@ -8,12 +8,22 @@ console.log(board.grid);
 
 // Your code here
 function makeBoard () {
+
+    //creates the win message and hides it
     const gameStatus = document.createElement('div');
     gameStatus.innerText = `You win!`.toUpperCase();
     gameStatus.setAttribute('id', 'win-message');
     gameStatus.setAttribute('class', 'hidden');
-
     document.body.appendChild(gameStatus);
+
+    //creates a reset button
+    const resetDiv = document.createElement('div');
+    document.body.appendChild(resetDiv)
+    const reset = document.createElement('button');
+    reset.innerText = `Reset Game`;
+    resetDiv.appendChild(reset)
+
+    //creates the gameboard
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id', 'game-board')
     console.log('making board')
@@ -29,7 +39,7 @@ function makeBoard () {
     document.body.appendChild(wrapper);
 }
 
-function test() {
+function squareListen() {
     const gameBoard = document.querySelector('#game-board')
     gameBoard.addEventListener('click', makeShot)
 }
@@ -59,8 +69,12 @@ function makeShot(e) {
     }
 }
 
+function resetGame() {
+
+}
+
 
 window.onload = () => {
     makeBoard();
-    test();
+    squareListen();
 }

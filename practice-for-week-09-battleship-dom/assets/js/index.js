@@ -8,6 +8,12 @@ console.log(board.grid);
 
 // Your code here
 function makeBoard () {
+    const gameStatus = document.createElement('div');
+    gameStatus.innerText = `You win!`.toUpperCase();
+    gameStatus.setAttribute('id', 'win-message');
+    gameStatus.setAttribute('class', 'hidden');
+
+    document.body.appendChild(gameStatus);
     const wrapper = document.createElement('div');
     wrapper.setAttribute('id', 'game-board')
     console.log('making board')
@@ -48,6 +54,7 @@ function makeShot(e) {
     if (gameStatus){
         const gameBoard = document.querySelector('#game-board')
         gameBoard.removeEventListener('click', makeShot)
+        document.querySelector('#win-message').setAttribute('class', '');
         console.log('Game over: eventlistener removed')
     }
 }

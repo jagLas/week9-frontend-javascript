@@ -27,7 +27,7 @@ button {
     gap: 16px 16px;
     padding: 0px;
     aspect-ratio: 1 / 1 ;
-    max-height: 80vh;
+    max-height: 75vh;
 }
 
 #win-message {
@@ -37,7 +37,7 @@ button {
 }
 
 #win-message.hidden {
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .square {

@@ -23,4 +23,30 @@ function makeBoard () {
     document.body.appendChild(wrapper);
 }
 
-window.onload = makeBoard;
+
+
+function test() {
+    const gameBoard = document.querySelector('#game-board')
+    gameBoard.addEventListener('click', (e) => {
+        // console.log(e.target);
+        const row = e.target.dataset.row;
+        const col = e.target.dataset.col;
+
+        let res;
+        if (row && col) {
+            res = board.makeHit(row, col)
+        }
+        console.log('shot at', [row, col], 'res:', res)
+        if (res) {
+            e.target.innerText = res;
+            e.target.classList.add('hit');
+        } else {
+            e.target.classList.add('class', 'miss');
+        }
+    })
+}
+
+window.onload = () => {
+    makeBoard();
+    test();
+}

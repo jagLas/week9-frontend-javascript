@@ -1,4 +1,4 @@
-class TTT {
+export class TTT {
 
   constructor() {
 
@@ -132,5 +132,3 @@ class TTT {
     return winner;
   }
 }
-
-module.exports = TTT;

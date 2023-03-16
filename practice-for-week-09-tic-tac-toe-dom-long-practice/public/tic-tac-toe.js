@@ -21,6 +21,7 @@ function placeMove(e) {
     // console.log(game.grid[row][col])
 
     if (grid[row][col] === ' '){
+        square.innerHTML = `<img src="./player-${game.playerTurn.toLowerCase()}.svg" alt="${game.playerTurn.toLowerCase()}">`
         console.log('placing move at', row, col)
         //updates the backend game state and checks for a winner
         game.placeMove(row, col);

@@ -43,6 +43,8 @@ const server = http.createServer((req, res) => {
           res.setHeader("Content-Type", "text/css");
         } else if (ext === ".js") {
           res.setHeader("Content-Type", "text/javascript");
+        } else if (ext === '.svg') {
+          res.setHeader("content-type", 'image/svg+xml')
         }
         res.end(resBody);
         return;

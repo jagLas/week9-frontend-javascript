@@ -30,4 +30,12 @@ button {
     aspect-ratio: 1/1;
     min-width: 64px;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+img {
+    min-width: 64px;
+    max-width: 90%;
 }

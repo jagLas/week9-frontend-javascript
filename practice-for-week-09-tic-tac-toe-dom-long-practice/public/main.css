@@ -1,1 +1,33 @@
 /* Your code here */
+header {
+    text-align: center;
+    font-size: 64px;
+}
+
+button {
+    font-size: 16px;
+    padding: .5em 1em;
+    margin: 0px 2em;
+}
+
+#board {
+    background-color: black;
+    min-width: fit-content;
+    max-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 32px auto;
+    gap: 8px;
+}
+
+#controls{
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.square {
+    aspect-ratio: 1/1;
+    min-width: 64px;
+    background-color: white;
+}

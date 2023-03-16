@@ -3,16 +3,20 @@
 // For storing user's theme selection in cookies
 function storeTheme(themeName) {
     // Your code here
+    document.cookie = `themeName=${themeName};max-age=120`;
 }
 
 // For restoring theme from cookies, if selected by the user in the past
 function restoreTheme() {
     // Your code here
+    const themeCookie = extractCookie('themeName');
+    if (themeCookie) setTheme(themeCookie);
 }
 
 // For clearing theme selection from cookies (reset to default)
 function clearTheme() {
     // Your code here
+    document.cookie = 'themeName=;max-age=0'
 }
 
 /* ================================ PHASE 3 ================================ */
@@ -20,16 +24,35 @@ function clearTheme() {
 // For storing user's display name in cookies
 function storeName(displayName) {
     // Your code here
+    document.cookie = `displayName=${displayName}`
 }
 
 // For restoring user's display name from cookies, if set in the past
 function restoreName() {
     // Your code here
+    const cookie = extractCookie('displayName');
+    if (cookie) setInputValue('display-name', cookie);
 }
 
 // For clearing user's display name from cookies
 function clearName() {
     // Your code here
+    document.cookie = 'displayName=;max-age=0'
+}
+
+function extractCookie (cookieName) {
+    let cookies = document.cookie.split('; ');
+    cookies = cookies.map(pair => {
+        return pair.split('=')
+    })
+    // console.log(cookies)
+    const cookieObj = {};
+    cookies.forEach(cookie => {
+        cookieObj[cookie[0]] = cookie[1]
+    })
+    
+    if(!cookieName) return cookieObj;
+    else return cookieObj[cookieName];
 }
 
 /* ========================================================================= */

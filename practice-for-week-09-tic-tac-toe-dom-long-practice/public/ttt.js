@@ -1,6 +1,3 @@
-const Screen = require("./screen");
-const Cursor = require("./cursor");
-
 class TTT {
 
   constructor() {
@@ -9,25 +6,7 @@ class TTT {
 
     this.grid = [[' ',' ',' '],
                  [' ',' ',' '],
-                 [' ',' ',' ']]
-
-    this.cursor = new Cursor(3, 3);
-
-    // Initialize a 3x3 tic-tac-toe grid
-    Screen.initialize(3, 3);
-    Screen.setGridlines(true);
-    Screen.setBackgroundColor(0, 0, this.cursor.cursorColor);
-
-    // Section for commands
-    Screen.addCommand('up', 'move cursor up', TTT.upCommand.bind(this));
-    Screen.addCommand('down', 'move cursor down', TTT.downCommand.bind(this));
-    Screen.addCommand('left', 'move cursor left', TTT.leftCommand.bind(this));
-    Screen.addCommand('right', 'move cursor right', TTT.rightCommand.bind(this));
-    Screen.addCommand('space', 'place an X or an O', TTT.placeMove.bind(this));
-
-    //render screen to begin
-    Screen.setMessage(`It is Player ${this.playerTurn}'s turn`);
-    Screen.render();
+                 [' ',' ',' ']];
   }
 
   static upCommand() {

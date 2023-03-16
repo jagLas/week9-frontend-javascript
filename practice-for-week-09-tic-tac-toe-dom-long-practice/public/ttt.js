@@ -131,19 +131,6 @@ class TTT {
 
     return winner;
   }
-
-  static endGame(winner) {
-    if (winner === 'O' || winner === 'X') {
-      Screen.setMessage(`Player ${winner} wins!`);
-    } else if (winner === 'T') {
-      Screen.setMessage(`Tie game!`);
-    } else {
-      Screen.setMessage(`Game Over`);
-    }
-    Screen.render();
-    Screen.quit();
-  }
-
 }
 
 module.exports = TTT;

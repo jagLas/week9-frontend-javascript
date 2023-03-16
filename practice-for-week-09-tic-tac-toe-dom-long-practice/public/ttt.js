@@ -117,7 +117,7 @@ export class TTT {
       } else if (checkAllRows(makeDiagnols(grid))) {  //checks diaganols
         return checkAllRows(makeDiagnols(grid)); 
       } else if (checkTies(grid)){  //checks ties
-        return 'T';
+        return 'None';
       } else {
         return false; //returns false if none of those
       }

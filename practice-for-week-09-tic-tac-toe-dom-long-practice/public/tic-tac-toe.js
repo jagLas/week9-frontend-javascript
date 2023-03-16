@@ -30,12 +30,21 @@ function placeMove(e) {
         //updates the backend game state and checks for a winner
         game.placeMove(row, col);
         let winner = TTT.checkWin(grid);
-        console.log(winner)
+        if (winner) onWin(winner);
+
     } else {
         console.log('unable to place move at', row, col);
     }
 
     console.log(grid)
+}
+
+function onWin(winner) {
+    console.log(winner)
+    const winSpan = document.querySelector('#winner')
+    winSpan.innerText = winner;
+    const board = document.querySelector('#board');
+    board.removeEventListener('click', placeMove)
 
 }
 

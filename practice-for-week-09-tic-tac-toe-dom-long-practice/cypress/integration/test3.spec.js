@@ -85,8 +85,9 @@ describe("Phase 3: Determining Game Status", function () {
     describe("Board behaves as expected after a win or tie", function () {
 
         it("After win, empty squares in the grid no longer react to clicks", function () {
-            cy.playGame(0,3,1,4,2)
-            cy.playGame(5,6,7,8)
+            cy.playGame(0,3,1,4,2,5,6,7,8)
+            //apparent bug in cyppress code fixed by moving the values into function call above
+            // cy.playGame(5,6,7,8)
             cy.get("#square-5 img")
                 .should("not.exist");
             cy.get("#square-6 img")
@@ -100,8 +101,8 @@ describe("Phase 3: Determining Game Status", function () {
         });
 
         it("After tie, empty squares in the grid no longer react to clicks", function () {
-            cy.playGame(0,1,2,3,5,4,7,8,6)
-            cy.playGame(5,6,7,8)
+            cy.playGame(0,1,2,3,5,4,7,8,6,5,6,7,8)
+            //apparent bug in cyppress code fixed by moving the values into function call above
             cy.get("body").contains("Winner: None")
                 .should("exist")
         });

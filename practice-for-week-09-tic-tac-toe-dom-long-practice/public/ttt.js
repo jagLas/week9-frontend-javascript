@@ -9,26 +9,6 @@ class TTT {
                  [' ',' ',' ']];
   }
 
-  static upCommand() {
-    this.cursor.up();
-    Screen.render();
-  }
-
-  static downCommand() {
-    this.cursor.down();
-    Screen.render();
-  }
-
-  static leftCommand() {
-    this.cursor.left();
-    Screen.render();
-  }
-
-  static rightCommand() {
-    this.cursor.right();
-    Screen.render();
-  }
-
   static placeMove() {
     //set the grid to display move and render screen
     Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);

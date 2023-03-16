@@ -9,25 +9,22 @@ class TTT {
                  [' ',' ',' ']];
   }
 
-  static placeMove() {
-    //set the grid to display move and render screen
-    Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
+  placeMove(row, col) {
+    //sets the grid to the appropriate marker
+    this.grid[row][col] = this.playerTurn;
     
+    //changes the player's turn
     if (this.playerTurn === 'O') {
       this.playerTurn = 'X';
     } else {
       this.playerTurn = 'O';
     }
-    Screen.setMessage(`It is Player ${this.playerTurn}'s turn`);
-    Screen.render();
 
     //checks if there is a winner
-    let winner = TTT.checkWin(Screen.grid);
+    let winner = TTT.checkWin(this.grid);
     if(winner){
       TTT.endGame(winner);
     }
-
-
   }
 
   static checkWin(grid) {

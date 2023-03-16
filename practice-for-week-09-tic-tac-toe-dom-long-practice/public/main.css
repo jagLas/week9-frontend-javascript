@@ -10,6 +10,20 @@ button {
     margin: 0px 2em;
 }
 
+img {
+    min-width: 64px;
+    max-width: 90%;
+}
+
+.square {
+    aspect-ratio: 1/1;
+    min-width: 64px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 #board {
     background-color: black;
     min-width: fit-content;
@@ -24,18 +38,4 @@ button {
     margin: 0px auto;
     display: flex;
     justify-content: center;
-}
-
-.square {
-    aspect-ratio: 1/1;
-    min-width: 64px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-img {
-    min-width: 64px;
-    max-width: 90%;
 }

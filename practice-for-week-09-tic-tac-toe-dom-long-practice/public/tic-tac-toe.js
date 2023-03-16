@@ -23,7 +23,8 @@ function placeMove(e) {
     if (grid[row][col] === ' '){
         console.log('placing move at', row, col)
         //updates the backend game state and checks for a winner
-        let winner = game.placeMove(row, col);
+        game.placeMove(row, col);
+        let winner = TTT.checkWin(grid);
         console.log(winner)
     } else {
         console.log('unable to place move at', row, col);

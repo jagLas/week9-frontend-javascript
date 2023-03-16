@@ -19,12 +19,6 @@ export class TTT {
     } else {
       this.playerTurn = 'O';
     }
-
-    //checks if there is a winner
-    let winner = TTT.checkWin(this.grid);
-    if(winner){
-      TTT.endGame(winner);
-    }
   }
 
   static checkWin(grid) {

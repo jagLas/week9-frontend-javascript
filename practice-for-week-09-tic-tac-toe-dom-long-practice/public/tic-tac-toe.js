@@ -101,16 +101,39 @@ function restoreGame () {
     }
 
     let ui = localStorage.getItem('ui');
-
     if (ui) {
         document.getElementById('board').innerHTML = ui;
     }
 
     //add code to restore player turn
+    let playerTurn = localStorage.getItem('playerTurn')
+    if (playerTurn) {
+        game.playerTurn = playerTurn;
+    }
 
     //enable/disable new game button
+    let newGameDis = localStorage.getItem('newGame');
+    if (newGameDis) {
+        console.log(newGameDis)
+        document.querySelector('#new-game').disabled = newGameDis == 'true';
+    }
+
+    if (newGameDis == 'true' || newGameDis === null) {
+        // document.querySelector('#board').removeEventListener('click', placeMove)
+        clickListener();
+    }
     
     //enable/disable give-up button
+    let giveUpDis = localStorage.getItem('giveUp');
+    if (giveUpDis) {
+        console.log(giveUpDis)
+        document.querySelector('#give-up').disabled = giveUpDis == 'true';
+    }
+
+    let winner = localStorage.getItem('winner');
+    if (winner) {
+        document.getElementById('winner').innerText = winner;
+    }
 
     console.log(game.grid)
 }
@@ -123,6 +146,7 @@ function startObserver() {
         localStorage.setItem('newGame', document.querySelector('#new-game').disabled);
         localStorage.setItem('giveUp', document.querySelector('#give-up').disabled);
         localStorage.setItem('playerTurn', game.playerTurn)
+        localStorage.setItem('winner', document.getElementById('winner').innerText)
     })
     const observerOptions = {
         childList: true,
@@ -133,8 +157,12 @@ function startObserver() {
     observer.observe(observerTarget, observerOptions)
 }
 
+// window.addEventListener('DOMContentLoaded', () => {
+//     document.querySelector('#new-game').addEventListener('click', newGame);
+//     document.querySelector('#give-up').addEventListener('click', giveUp)
+// })
+
 window.onload = () => {
-    clickListener();
     document.querySelector('#new-game').addEventListener('click', newGame);
     document.querySelector('#give-up').addEventListener('click', giveUp)
-};
+}

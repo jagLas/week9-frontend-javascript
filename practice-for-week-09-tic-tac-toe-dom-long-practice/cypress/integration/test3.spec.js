@@ -52,6 +52,7 @@ describe("Phase 3: Determining Game Status", function () {
             cy.playGame(0,6,1,7,5,8)
             cy.get("body").contains("Winner: O")
                 .should("exist")
+            cy.clearLocalStorage()
         });
 
         it("If a player has any three in a column, then that player wins", function () {

@@ -1,13 +1,17 @@
 import {TTT} from './ttt.js';
 
-const game = new TTT();
-const grid = game.grid;
-console.log(game, grid)
+let game = new TTT();
+console.log(game, game.grid)
 
 // Your code here
 function clickListener () {
     const board = document.querySelector('#board');
     board.addEventListener('click', placeMove)
+}
+
+function newGameListener() {
+    const newGameButton = document.querySelector('#new-game');
+    newGameButton.addEventListener('click', newGame)
 }
 
 function placeMove(e) {
@@ -33,20 +37,38 @@ function placeMove(e) {
 
     //updates the backend game state and checks for a winner
     game.placeMove(row, col);
-    let winner = TTT.checkWin(grid);
+    let winner = TTT.checkWin(game.grid);
     if (winner) onWin(winner);
 
-    // console.log(grid)
+    // console.log(game.grid)
 }
 
 function onWin(winner) {
+
     // console.log(winner)
     const winSpan = document.querySelector('#winner')
     winSpan.innerText = winner;
     const board = document.querySelector('#board');
     board.removeEventListener('click', placeMove)
+    newGameListener();
+}
+
+function newGame(e) {
+    //reset game logic
+    game = new TTT();
+
+    //resets ui
+    for (let i = 0; i < 9; i++) {
+        const square = document.querySelector(`#square-${i}`);
+        square.innerHTML = '';
+    }
+    document.querySelector('#winner').innerHTML = '';
+
+    //turn on click event listener
+    clickListener();
+    document.querySelector('#new-game').removeEventListener('click', newGame);
 }
 
 window.onload = () => {
-    clickListener()
+    clickListener();
 };

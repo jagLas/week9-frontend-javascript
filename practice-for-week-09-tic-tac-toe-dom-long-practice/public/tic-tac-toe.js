@@ -75,7 +75,7 @@ function newGame(e) {
 
 function giveUp() {
     let winner;
-    if (this.playerTurn === 'X') {
+    if (game.playerTurn === 'X') {
         winner = 'O';
     } else {
         winner = 'X';

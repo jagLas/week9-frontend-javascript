@@ -2,16 +2,13 @@ import {TTT} from './ttt.js';
 
 let game = new TTT();
 console.log(game, game.grid)
+restoreGame();
+startObserver();
 
 // Your code here
 function clickListener () {
     const board = document.querySelector('#board');
     board.addEventListener('click', placeMove)
-}
-
-function newGameListener() {
-    const newGameButton = document.querySelector('#new-game');
-    newGameButton.addEventListener('click', newGame)
 }
 
 function placeMove(e) {
@@ -84,9 +81,55 @@ function giveUp() {
     onWin(winner);
 }
 
+function restoreGame () {
+    let prevGame = localStorage.getItem('grid');
+    if (prevGame) {
+        prevGame = prevGame.split(',');
+        let prevGrid = [[],[],[]];
+        prevGame.forEach((space, i) => {
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+            prevGrid[row][col] = space;
+        })
+
+        game.grid = prevGrid;
+    }
+
+    let ui = localStorage.getItem('ui');
+
+    if (ui) {
+        document.getElementById('board').innerHTML = ui;
+    }
+
+    //add code to restore player turn
+
+    //enable/disable new game button
+    
+    //enable/disable give-up button
+
+    console.log(game.grid)
+}
+
+function startObserver() {
+    const observerTarget = document.body
+    const observer = new MutationObserver(() => {
+        localStorage.setItem('grid', game.grid);
+        localStorage.setItem('ui', document.getElementById('board').innerHTML);
+        localStorage.setItem('newGame', document.querySelector('#new-game').disabled);
+        localStorage.setItem('giveUp', document.querySelector('#give-up').disabled);
+        localStorage.setItem('playerTurn', game.playerTurn)
+    })
+    const observerOptions = {
+        childList: true,
+        attributes: true,
+        subtree: true,
+    };
+
+    observer.observe(observerTarget, observerOptions)
+}
+
 window.onload = () => {
     clickListener();
-    // newGameListener();
     document.querySelector('#new-game').addEventListener('click', newGame);
     document.querySelector('#give-up').addEventListener('click', giveUp)
 };

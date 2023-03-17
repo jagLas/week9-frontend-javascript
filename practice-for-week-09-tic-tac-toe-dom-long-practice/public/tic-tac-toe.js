@@ -20,6 +20,11 @@ function placeMove(e) {
         return;
     }
 
+    //avoids bug that collapses board when gap is clicked instead of square
+    if(e.target.id === 'board') {
+        return;
+    }
+    
     //turns id into coordinates for 2d matrix
     let id = square.id.split('-')[1];
     let row = Math.floor(id / 3);

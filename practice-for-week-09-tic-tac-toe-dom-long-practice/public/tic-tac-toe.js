@@ -11,6 +11,7 @@ function clickListener () {
 
 function newGameListener() {
     const newGameButton = document.querySelector('#new-game');
+    console.log(newGameButton)
     newGameButton.addEventListener('click', newGame)
 }
 
@@ -50,7 +51,9 @@ function onWin(winner) {
     winSpan.innerText = winner;
     const board = document.querySelector('#board');
     board.removeEventListener('click', placeMove)
-    newGameListener();
+
+    //enable new game button
+    document.querySelector('#new-game').disabled = false;
 }
 
 function newGame(e) {
@@ -64,11 +67,12 @@ function newGame(e) {
     }
     document.querySelector('#winner').innerHTML = '';
 
-    //turn on click event listener
+    //turn on click event listener and disable button
     clickListener();
-    document.querySelector('#new-game').removeEventListener('click', newGame);
+    document.querySelector('#new-game').disabled = true;
 }
 
 window.onload = () => {
     clickListener();
+    newGameListener();
 };

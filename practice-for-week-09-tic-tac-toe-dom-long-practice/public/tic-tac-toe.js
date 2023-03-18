@@ -2,8 +2,8 @@ import {TTT} from './ttt.js';
 
 let game = new TTT();
 console.log(game, game.grid)
-restoreGame();
-startObserver();
+// restoreGame();
+// startObserver();
 
 // Your code here
 function clickListener () {
@@ -87,6 +87,7 @@ function giveUp() {
 }
 
 function restoreGame () {
+    console.log(document.body)
     let prevGame = localStorage.getItem('grid');
     if (prevGame) {
         prevGame = prevGame.split(',');
@@ -138,6 +139,11 @@ function restoreGame () {
     console.log(game.grid)
 }
 
+
+/*
+//This function works identically to the event listener that is found in the onload section
+//For some reason, however, using an observer instead of a click event was causing cypress tests
+//to fail. Using a click event resolves the bug
 function startObserver() {
     const observerTarget = document.body
     const observer = new MutationObserver(() => {
@@ -145,24 +151,33 @@ function startObserver() {
         localStorage.setItem('ui', document.getElementById('board').innerHTML);
         localStorage.setItem('newGame', document.querySelector('#new-game').disabled);
         localStorage.setItem('giveUp', document.querySelector('#give-up').disabled);
-        localStorage.setItem('playerTurn', game.playerTurn)
-        localStorage.setItem('winner', document.getElementById('winner').innerText)
+        localStorage.setItem('playerTurn', game.playerTurn);
+        localStorage.setItem('winner', document.getElementById('winner').innerText);
     })
     const observerOptions = {
         childList: true,
         attributes: true,
-        subtree: true,
+        subtree: true
     };
 
     observer.observe(observerTarget, observerOptions)
 }
-
-// window.addEventListener('DOMContentLoaded', () => {
-//     document.querySelector('#new-game').addEventListener('click', newGame);
-//     document.querySelector('#give-up').addEventListener('click', giveUp)
-// })
+*/
 
 window.onload = () => {
+
+    restoreGame();
+    
+    // clickListener();
     document.querySelector('#new-game').addEventListener('click', newGame);
     document.querySelector('#give-up').addEventListener('click', giveUp)
+    // startObserver();
+    document.body.addEventListener('click', () => {
+        localStorage.setItem('grid', game.grid);
+        localStorage.setItem('ui', document.getElementById('board').innerHTML);
+        localStorage.setItem('newGame', document.querySelector('#new-game').disabled);
+        localStorage.setItem('giveUp', document.querySelector('#give-up').disabled);
+        localStorage.setItem('playerTurn', game.playerTurn);
+        localStorage.setItem('winner', document.getElementById('winner').innerText);
+    })
 }
